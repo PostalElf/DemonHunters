@@ -10,7 +10,7 @@
         With frameDesign
             .BaseFrame = frame
             .Attacks = frame.BuildUnitAttacks
-            .Costs = Cost.Total(frame.TotalCosts)
+            .Costs = Cost.Strip(Cost.Total(frame.TotalCosts), PaymentTime.Use)
         End With
         Return frameDesign
     End Function

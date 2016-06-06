@@ -36,9 +36,7 @@
         Next
 
         'add all use cost
-        For Each Cost As Cost In costList
-            If Cost.PaymentTime = PaymentTime.Use Then total.UseCost.Add(Cost)
-        Next
+        total.UseCost = Cost.Retain(costList, PaymentTime.Use)
 
         Return total
     End Function

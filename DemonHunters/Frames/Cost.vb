@@ -34,6 +34,20 @@
         parent.Add(cost)
         Return cost
     End Function
+    Friend Shared Function Strip(ByVal inputList As List(Of Cost), ByVal paymentTime As PaymentTime) As List(Of Cost)
+        Dim total As New List(Of Cost)
+        For Each input As Cost In inputList
+            If input.PaymentTime <> paymentTime Then total.Add(input)
+        Next
+        Return total
+    End Function
+    Friend Shared Function Retain(ByVal inputList As List(Of Cost), ByVal paymentTime As PaymentTime) As List(Of Cost)
+        Dim total As New List(Of Cost)
+        For Each input As Cost In inputList
+            If input.PaymentTime = paymentTime Then total.Add(input)
+        Next
+        Return total
+    End Function
 
     Friend Shared Function Total(ByVal inputList As List(Of Cost)) As List(Of Cost)
         Dim t As New List(Of Cost)
@@ -71,6 +85,7 @@
 
         Return t
     End Function
+
 End Class
 
 Public Enum PaymentTime
