@@ -52,7 +52,7 @@
         With bladeRaw
             .Enqueue("Name:Soulsteel Blade")
             .Enqueue("Keywords:Hard Blade")
-            .Enqueue("Effect:Melee|50|3-5 kinetic_hard")
+            .Enqueue("EffectAttack:Melee|50|3-5 kinetic_hard")
             .Enqueue("Cost:5 supplies at production")
             .Enqueue("Cost:1 labour at production")
         End With
@@ -66,7 +66,7 @@
             .Enqueue("Keywords:Melee Enchantment")
             .Enqueue("Cost:5 mana at production")
             .Enqueue("Cost:1 labour at production")
-            .Enqueue("Effect:Melee|0|5-5 arcane")
+            .Enqueue("EffectAttack:Melee|0|5-5 arcane")
         End With
         Dim hellfire As Subcomponent = Subcomponent.Build(hellfireRaw)
         If falchion.AddCheck("Enchantment 1", hellfire) = False Then Throw New Exception
@@ -77,7 +77,7 @@
             .Enqueue("Name:Truestriking")
             .Enqueue("Keywords:Melee Enchantment")
             .Enqueue("Cost:5 mana at production")
-            .Enqueue("Effect:Melee|20|1-1 kinetic_hard")
+            .Enqueue("EffectAttack:Melee|20|1-1 kinetic_hard")
         End With
         Dim truestrike As Subcomponent = Subcomponent.Build(truestrikeRaw)
         If falchion.AddCheck("Enchantment 2", truestrike) = False Then Throw New Exception
@@ -101,8 +101,8 @@
         With pistolframeRaw
             .Enqueue("Name:Heavyduty Pistol Frame")
             .Enqueue("Keywords:Pistol Frame")
-            .Enqueue("Effect:Close|35|3-5 kinetic_hard")
-            .Enqueue("Effect:Medium|10|1-3 kinetic_hard")
+            .Enqueue("EffectAttack:Close|35|3-5 kinetic_hard")
+            .Enqueue("EffectAttack:Medium|10|1-3 kinetic_hard")
         End With
         Dim pistolframe As Subcomponent = Subcomponent.Build(pistolframeRaw)
         If pistol.AddCheck("Pistol Frame", pistolframe) = False Then Throw New Exception
@@ -113,7 +113,7 @@
             .Enqueue("Name:Standard Gauss Rounds")
             .Enqueue("Keywords:Caseless Ammo")
             .Enqueue("Cost:1 supplies at use")
-            .Enqueue("Effect:Close|5|0-0 none")
+            .Enqueue("EffectAttack:Close|5|0-0 none")
         End With
         Dim caseless As Subcomponent = Subcomponent.Build(caselessRaw)
         If pistol.AddCheck("Caseless Ammo", caseless) = False Then Throw New Exception
@@ -158,8 +158,8 @@
             .Enqueue("Keywords:Main Tank Weapon")
             .Enqueue("Cost:3 supplies at production")
             .Enqueue("Cost:1 labour at production")
-            .Enqueue("Effect:Close|45|4-6 energy_hard")
-            .Enqueue("Effect:Medium|40|3-5 energy_hard")
+            .Enqueue("EffectAttack:Close|45|4-6 energy_hard")
+            .Enqueue("EffectAttack:Medium|40|3-5 energy_hard")
             .Enqueue("IsAttack")
         End With
         Dim nova As Subcomponent = Subcomponent.Build(novaRaw)

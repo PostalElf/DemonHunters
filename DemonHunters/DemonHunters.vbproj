@@ -73,15 +73,15 @@
     <Compile Include="Dev\Dev.vb" />
     <Compile Include="Dev\IO.vb" />
     <Compile Include="Frames\Attack.vb" />
-    <Compile Include="Frames\Component.vb" />
+    <Compile Include="Frames\Base Classes\Component.vb" />
     <Compile Include="Frames\Effect\Damages.vb" />
     <Compile Include="Frames\Effect\DamageType.vb" />
-    <Compile Include="Frames\Effect\EffectDistance.vb" />
+    <Compile Include="Frames\Effect\EffectAttackDistance.vb" />
     <Compile Include="Frames\FrameDesign.vb" />
-    <Compile Include="Frames\Subcomponent.vb" />
+    <Compile Include="Frames\Base Classes\Subcomponent.vb" />
     <Compile Include="Frames\Cost.vb" />
-    <Compile Include="Frames\Effect\Effect.vb" />
-    <Compile Include="Frames\Frame.vb" />
+    <Compile Include="Frames\Effect\EffectAttack.vb" />
+    <Compile Include="Frames\Base Classes\Frame.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -99,7 +99,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Dev\Range.vb" />
-    <Compile Include="Tests\FrameTest.vb" />
+    <Compile Include="Frames\Tests\FrameTest.vb" />
     <Compile Include="UnitType.vb" />
   </ItemGroup>
   <ItemGroup>

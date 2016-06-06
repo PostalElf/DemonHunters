@@ -1,15 +1,15 @@
-﻿Public Class Effect
-    Friend Property Distance As EffectDistance
+﻿Public Class EffectAttack
+    Friend Property Distance As EffectAttackDistance
     Friend Property Accuracy As Integer
     Friend Property Damages As Damages
 
-    Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As Effect
+    Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of EffectAttack)) As EffectAttack
         'effect:melee|50|5-10 kinetic_hard, 5-5 kinetic_soft
 
         Dim r As String() = raw.Split("|")
-        Dim effect As New Effect
+        Dim effect As New EffectAttack
         With effect
-            .Distance = Dev.StringToEnum(r(0).Trim, GetType(EffectDistance))
+            .Distance = Dev.StringToEnum(r(0).Trim, GetType(EffectAttackDistance))
             .Accuracy = CInt(r(1))
             .Damages = Damages.Build(r(2))
         End With

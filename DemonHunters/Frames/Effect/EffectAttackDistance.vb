@@ -1,4 +1,4 @@
-﻿Public Enum EffectDistance
+﻿Public Enum EffectAttackDistance
     Melee = 0
     Close
     Medium

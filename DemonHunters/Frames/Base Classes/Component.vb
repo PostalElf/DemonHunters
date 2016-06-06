@@ -33,5 +33,5 @@
     End Function
     Friend MustOverride Function BuildAttack() As Attack
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
-    Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)
+    Friend MustOverride ReadOnly Property TotalEffects As List(Of EffectAttack)
 End Class

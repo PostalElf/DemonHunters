@@ -1,6 +1,6 @@
 ﻿Public Class Subcomponent
     Inherits Component
-    Private Effects As New List(Of Effect)
+    Private Effects As New List(Of EffectAttack)
 
     Friend Shared Function Build(ByVal raw As Queue(Of String)) As Subcomponent
         Dim subcomponent As New Subcomponent
@@ -9,7 +9,8 @@
             If subcomponent.BuildBase(current, subcomponent) = False Then
                 With subcomponent
                     Select Case current(0).Trim.ToLower
-                        Case "effect" : Effect.Build(current(1).Trim, .Effects)
+                        Case "effectattack" : EffectAttack.Build(current(1).Trim, .Effects)
+
                         Case Else : Throw New Exception("Invalid build string for Subcomponent.")
                     End Select
                 End With
@@ -26,7 +27,7 @@
             Return MyBase.Costs
         End Get
     End Property
-    Friend Overrides ReadOnly Property TotalEffects As List(Of Effect)
+    Friend Overrides ReadOnly Property TotalEffects As List(Of EffectAttack)
         Get
             Return Effects
         End Get

@@ -3,23 +3,23 @@
     Private UseCost As New List(Of Cost)
 
     Public Sub New()
-        For Each dt As EffectDistance In System.Enum.GetValues(GetType(EffectDistance))
+        For Each dt As EffectAttackDistance In System.Enum.GetValues(GetType(EffectAttackDistance))
             Dictionary.Add(dt, Nothing)
         Next
     End Sub
     Public Overrides Function ToString() As String
         Dim total As String = ""
-        For Each dt As EffectDistance In System.Enum.GetValues(GetType(EffectDistance))
-            Dim effect As Effect = Dictionary(dt)
+        For Each dt As EffectAttackDistance In System.Enum.GetValues(GetType(EffectAttackDistance))
+            Dim effect As EffectAttack = Dictionary(dt)
             If effect Is Nothing = False Then total &= effect.ToString & vbCrLf
         Next
         Return total
     End Function
-    Public Shared Function Build(ByVal effectList As List(Of Effect), ByVal costList As List(Of Cost)) As Attack
+    Public Shared Function Build(ByVal effectList As List(Of EffectAttack), ByVal costList As List(Of Cost)) As Attack
         Dim total As New Attack
-        For Each e As Effect In effectList
-            Dim distance As EffectDistance = e.Distance
-            If total(distance) Is Nothing Then total(distance) = New Effect
+        For Each e As EffectAttack In effectList
+            Dim distance As EffectAttackDistance = e.Distance
+            If total(distance) Is Nothing Then total(distance) = New EffectAttack
             With total(distance)
                 .Distance = distance
                 .Accuracy += e.Accuracy
@@ -28,7 +28,7 @@
         Next
 
         'constrain accuracy to within 5 and 95
-        For Each dt As EffectDistance In System.Enum.GetValues(GetType(EffectDistance))
+        For Each dt As EffectAttackDistance In System.Enum.GetValues(GetType(EffectAttackDistance))
             If total(dt) Is Nothing = False Then total(dt).Accuracy = Dev.Constrain(total(dt).Accuracy, 5, 95)
         Next
 
@@ -40,20 +40,20 @@
         Return total
     End Function
 
-    Public Sub Add(ByVal key As EffectDistance, ByVal value As Effect)
+    Public Sub Add(ByVal key As EffectAttackDistance, ByVal value As EffectAttack)
         Dictionary.Add(key, value)
     End Sub
-    Public Function ContainsKey(ByVal key As EffectDistance) As Boolean
-        For Each k As EffectDistance In Dictionary.Keys
+    Public Function ContainsKey(ByVal key As EffectAttackDistance) As Boolean
+        For Each k As EffectAttackDistance In Dictionary.Keys
             If k = key Then Return True
         Next
         Return False
     End Function
-    Default Public Property Item(ByVal key As EffectDistance) As Effect
+    Default Public Property Item(ByVal key As EffectAttackDistance) As EffectAttack
         Get
             Return Dictionary(key)
         End Get
-        Set(ByVal value As Effect)
+        Set(ByVal value As EffectAttack)
             Dictionary(key) = value
         End Set
     End Property
