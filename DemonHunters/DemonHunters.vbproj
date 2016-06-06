@@ -74,6 +74,9 @@
     <Compile Include="Dev\IO.vb" />
     <Compile Include="Frames\Attack.vb" />
     <Compile Include="Frames\Component.vb" />
+    <Compile Include="Frames\Effect\Damages.vb" />
+    <Compile Include="Frames\Effect\DamageType.vb" />
+    <Compile Include="Frames\Effect\EffectDistance.vb" />
     <Compile Include="Frames\FrameDesign.vb" />
     <Compile Include="Frames\Subcomponent.vb" />
     <Compile Include="Frames\Cost.vb" />
