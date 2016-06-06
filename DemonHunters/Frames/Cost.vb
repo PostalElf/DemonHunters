@@ -34,6 +34,14 @@
         parent.Add(cost)
         Return cost
     End Function
+    Friend Function Unbuild() As String
+        Dim total As String = ""
+        total &= Quantity & " "
+        If PaymentNature = DemonHunters.PaymentNature.Crew Then total &= CrewType.ToString Else total &= PaymentNature.ToString
+        total &= " at "
+        total &= PaymentTime.ToString
+        Return total
+    End Function
     Friend Shared Function Strip(ByVal inputList As List(Of Cost), ByVal paymentTime As PaymentTime) As List(Of Cost)
         Dim total As New List(Of Cost)
         For Each input As Cost In inputList

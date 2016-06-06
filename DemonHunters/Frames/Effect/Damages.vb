@@ -22,6 +22,25 @@
         Next
         Return damages
     End Function
+    Friend Function Unbuild() As String
+        Dim total As String = ""
+        For Each d In System.Enum.GetValues(GetType(DamageType))
+            Dim range As Range = Dictionary(d)
+            If range.min = 0 AndAlso range.max = 0 Then
+                'do nothing
+            Else
+                total &= range.min
+                total &= "-"
+                total &= range.max
+                total &= " "
+                total &= d.ToString
+                total &= ", "
+            End If
+        Next
+        If total = "" Then Return "0-0 None"
+        total = total.Remove(total.Length - 2, 2)
+        Return total
+    End Function
 
 
     Default Friend Property Item(ByVal key As DamageType) As Range
@@ -46,7 +65,7 @@
                 If range.min = 0 AndAlso range.max = 0 Then
                     'do nothing
                 Else
-                    total &= dt.ToString & ": " & Dictionary(dt).ToString & ", "
+                    total &= range.ToString & " " & dt.ToString & ", "
                 End If
             End If
         Next

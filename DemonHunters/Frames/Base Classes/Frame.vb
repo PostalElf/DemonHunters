@@ -43,6 +43,21 @@
         End While
         Return frame
     End Function
+    Friend Overrides Function Unbuild() As Queue(Of String)
+        Dim total As New Queue(Of String)
+        With total
+            .Enqueue("Name:" & Name)
+            .Enqueue("UnitType:" & UnitType.ToString)
+            .Enqueue("Keywords:" & Dev.ListWithCommas(Keywords))
+            For Each Cost As Cost In Costs
+                .Enqueue("Cost:" & Cost.Unbuild)
+            Next
+            For Each slot As FrameSlot In Slots.Values
+                .Enqueue("Slot:" & slot.Unbuild)
+            Next
+        End With
+        Return total
+    End Function
     Public Overrides Function ToString() As String
         Return Name
     End Function
@@ -111,6 +126,13 @@ Public Class FrameSlot
         End With
         parent.Add(slot.Name, slot)
         Return slot
+    End Function
+    Friend Function Unbuild() As String
+        Dim total As String = ""
+        total &= Name
+        total &= "|"
+        total &= Dev.ListWithCommas(KeywordRequirements)
+        Return total
     End Function
     Public Overrides Function ToString() As String
         If EquippedComponent Is Nothing Then Return "-" Else Return EquippedComponent.ToString

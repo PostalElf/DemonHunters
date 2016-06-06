@@ -6,4 +6,5 @@
 
         Return Nothing
     End Function
+    Friend MustOverride Function Unbuild() As String
 End Class

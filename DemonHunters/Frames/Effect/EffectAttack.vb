@@ -4,7 +4,7 @@
     Friend Property Accuracy As Integer
     Friend Property Damages As Damages
 
-    Friend Overloads Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectAttack
+    Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectAttack
         'effect:melee|50|5-10 kinetic_hard, 5-5 kinetic_soft
 
         Dim r As String() = raw.Split("|")
@@ -16,6 +16,15 @@
         End With
         parent.Add(effect)
         Return effect
+    End Function
+    Friend Overrides Function Unbuild() As String
+        Dim total As String = "EffectAttack:"
+        total &= Distance.ToString
+        total &= "|"
+        total &= Accuracy
+        total &= "|"
+        total &= Damages.unbuild()
+        Return total
     End Function
     Public Overrides Function ToString() As String
         Dim total As String = "[" & Distance.ToString & "] "

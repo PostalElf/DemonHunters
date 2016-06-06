@@ -28,4 +28,10 @@
         Dim max As Integer = v2.max - v2.max
         Return New Range(min, max)
     End Operator
+    Public Shared Operator =(ByVal v1 As Range, ByVal v2 As Range) As Boolean
+        If v1.min = v2.min AndAlso v1.max = v2.max Then Return True Else Return False
+    End Operator
+    Public Shared Operator <>(ByVal v1 As Range, ByVal v2 As Range) As Boolean
+        If v1 = v2 Then Return False Else Return True
+    End Operator
 End Structure

@@ -18,6 +18,20 @@
         End While
         Return subcomponent
     End Function
+    Friend Overrides Function Unbuild() As Queue(Of String)
+        Dim total As New Queue(Of String)
+        With total
+            .Enqueue("Name:" & Name)
+            .Enqueue("Keywords:" & Dev.ListWithCommas(Keywords))
+            For Each Cost As Cost In Costs
+                .Enqueue("Cost:" & Cost.Unbuild)
+            Next
+            For Each Effect As Effect In Effects
+                .Enqueue(Effect.unbuild)
+            Next
+        End With
+        Return total
+    End Function
     Public Overrides Function ToString() As String
         Return MyBase.Name
     End Function

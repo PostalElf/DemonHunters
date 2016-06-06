@@ -14,4 +14,10 @@
         End With
         Return frameDesign
     End Function
+    Friend Function Unbuild() As Queue(Of String)
+        Return BaseFrame.unbuild
+    End Function
+    Public Overrides Function ToString() As String
+        Return BaseFrame.ToString
+    End Function
 End Class

@@ -17,6 +17,7 @@
         Next
 
         Dim hunterDesign As FrameDesign = FrameDesign.Build(hunter)
+        Dim hunterUnbuilt As Queue(Of String) = hunter.Unbuild
         hunter = Nothing
     End Sub
     Private Shared Function BuildHunter() As Frame
