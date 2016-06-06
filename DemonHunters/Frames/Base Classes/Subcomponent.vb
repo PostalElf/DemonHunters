@@ -1,6 +1,6 @@
 ﻿Public Class Subcomponent
     Inherits Component
-    Private Effects As New List(Of EffectAttack)
+    Private Effects As New List(Of Effect)
 
     Friend Shared Function Build(ByVal raw As Queue(Of String)) As Subcomponent
         Dim subcomponent As New Subcomponent
@@ -27,7 +27,7 @@
             Return MyBase.Costs
         End Get
     End Property
-    Friend Overrides ReadOnly Property TotalEffects As List(Of EffectAttack)
+    Friend Overrides ReadOnly Property TotalEffects As List(Of Effect)
         Get
             Return Effects
         End Get

@@ -21,6 +21,7 @@
         'returns false if nothing matches; build is then handled by child
 
         With component
+            Dim current As String = raw(0).Trim.ToLower
             Select Case raw(0).Trim.ToLower
                 Case "name" : .Name = raw(1).Trim
                 Case "keywords" : .Keywords = Dev.ParseCommaList(raw(1).Trim)
@@ -33,5 +34,5 @@
     End Function
     Friend MustOverride Function BuildAttack() As Attack
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
-    Friend MustOverride ReadOnly Property TotalEffects As List(Of EffectAttack)
+    Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)
 End Class

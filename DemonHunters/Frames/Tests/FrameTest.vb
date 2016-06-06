@@ -124,13 +124,18 @@
 
     Shared Sub TankTest()
         Dim tank As Frame = BuildTank()
-        Dim nova As Subcomponent = BuildNova()
-        Dim treads As Subcomponent = buildTreads()
+        Dim comps As New Dictionary(Of String, Subcomponent)
+        With comps
+            .Add("Main Tank Weapon", BuildNova)
+            .Add("Tank Motive System", BuildTreads)
+            .Add("Tank Armour", BuildArmour)
+            .Add("Tank Power Source", BuildDiesel)
+        End With
 
-        tank.AddCheck("Main Tank Weapon", nova)
-        tank.Add("Main Tank Weapon", nova)
-        tank.AddCheck("Tank Motive System", treads)
-        tank.Add("Tank Motive System", treads)
+        For Each kvp As KeyValuePair(Of String, Subcomponent) In comps
+            If tank.AddCheck(kvp.Key, kvp.Value) = False Then Throw New Exception
+            tank.Add(kvp.Key, kvp.Value)
+        Next
 
         Dim tankDesign As FrameDesign = FrameDesign.Build(tank)
         tank = Nothing
@@ -146,7 +151,8 @@
             .Enqueue("Slot:Main Tank Weapon|Main Tank Weapon,Compulsory")
             .Enqueue("Slot:Secondary Tank Weapon|Secondary Tank Weapon")
             .Enqueue("Slot:Tank Motive System|Tank Motive System,Compulsory")
-            .Enqueue("Slot:Tank Armour|Tank Armour,Compulsory")
+            .Enqueue("Slot:Tank Armour|Tank Armour")
+            .Enqueue("Slot:Tank Power Source|Tank Power Source,Compulsory")
         End With
         Dim tank As Frame = Frame.Build(tankRaw)
         Return tank
@@ -174,5 +180,24 @@
         End With
         Dim treads As Subcomponent = Subcomponent.Build(treadsRaw)
         Return treads
+    End Function
+    Private Shared Function BuildArmour() As Subcomponent
+        Dim armourRaw As New Queue(Of String)
+        With armourRaw
+            .Enqueue("Name:Soulsteel Plating")
+            .Enqueue("Keywords:Tank Armour, Hunter Armour")
+            .Enqueue("Cost:3 supplies at production")
+        End With
+        Dim armour As Subcomponent = Subcomponent.Build(armourRaw)
+        Return armour
+    End Function
+    Private Shared Function BuildDiesel() As Subcomponent
+        Dim raw As New Queue(Of String)
+        With raw
+            .Enqueue("Name:Diesel Engine")
+            .Enqueue("Keywords:Tank Power Source")
+            .Enqueue("Cost:1 supplies at production")
+        End With
+        Return Subcomponent.Build(raw)
     End Function
 End Class

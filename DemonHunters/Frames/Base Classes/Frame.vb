@@ -3,12 +3,12 @@
     Private Slots As New Dictionary(Of String, FrameSlot)
     Private UnitType As UnitType = 0
 
-    Friend Overrides ReadOnly Property TotalEffects As List(Of EffectAttack)
+    Friend Overrides ReadOnly Property TotalEffects As List(Of Effect)
         Get
-            Dim total As New List(Of EffectAttack)
+            Dim total As New List(Of Effect)
             For Each slot As FrameSlot In Slots.Values
                 If slot Is Nothing Then Continue For
-                Dim slotEffects As List(Of EffectAttack) = slot.TotalEffects
+                Dim slotEffects As List(Of Effect) = slot.TotalEffects
                 If slotEffects Is Nothing = False Then total.AddRange(slotEffects)
             Next
             Return total
@@ -133,7 +133,7 @@ Public Class FrameSlot
         Remove = EquippedComponent
         EquippedComponent = Nothing
     End Function
-    Friend Function TotalEffects() As List(Of EffectAttack)
+    Friend Function TotalEffects() As List(Of Effect)
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.TotalEffects
     End Function
     Friend Function TotalCosts() As List(Of Cost)

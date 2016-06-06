@@ -1,9 +1,10 @@
 ﻿Public Class EffectAttack
+    Inherits Effect
     Friend Property Distance As EffectAttackDistance
     Friend Property Accuracy As Integer
     Friend Property Damages As Damages
 
-    Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of EffectAttack)) As EffectAttack
+    Friend Overloads Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectAttack
         'effect:melee|50|5-10 kinetic_hard, 5-5 kinetic_soft
 
         Dim r As String() = raw.Split("|")

@@ -15,9 +15,12 @@
         Next
         Return total
     End Function
-    Public Shared Function Build(ByVal effectList As List(Of EffectAttack), ByVal costList As List(Of Cost)) As Attack
+    Public Shared Function Build(ByVal effectList As List(Of Effect), ByVal costList As List(Of Cost)) As Attack
         Dim total As New Attack
-        For Each e As EffectAttack In effectList
+        For Each effect As Effect In effectList
+            If TypeOf effect Is EffectAttack = False Then Continue For
+            Dim e As EffectAttack = CType(effect, EffectAttack)
+
             Dim distance As EffectAttackDistance = e.Distance
             If total(distance) Is Nothing Then total(distance) = New EffectAttack
             With total(distance)
