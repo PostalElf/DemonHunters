@@ -72,6 +72,14 @@
         If IsAttack = False Then Return Nothing
         Return Attack.Build(TotalEffects, TotalCosts)
     End Function
+    Friend ReadOnly Property DesignReady As Boolean
+        Get
+            For Each slot As FrameSlot In Slots.Values
+                If slot.DesignReady = False Then Return False
+            Next
+            Return True
+        End Get
+    End Property
     Friend Function BuildUnitAttacks() As List(Of Attack)
         Dim total As New List(Of Attack)
         For Each slot In Slots.Values
@@ -86,6 +94,7 @@ Public Class FrameSlot
     Private Name As String
     Private KeywordRequirements As New List(Of String)
     Private EquippedComponent As Component
+    Private IsCompulsory As Boolean = False
 
     Friend Shared Function Build(ByVal raw As String, ByRef parent As Dictionary(Of String, FrameSlot)) As FrameSlot
         'slot:hunter right hand|hunter hand, melee
@@ -95,6 +104,10 @@ Public Class FrameSlot
         With slot
             .Name = r(0).Trim
             .KeywordRequirements = Dev.ParseCommaList(r(1))
+            If .KeywordRequirements.Contains("Compulsory") Then
+                .KeywordRequirements.Remove("Compulsory")
+                .IsCompulsory = True
+            End If
         End With
         parent.Add(slot.Name, slot)
         Return slot
@@ -129,4 +142,12 @@ Public Class FrameSlot
     Friend Function BuildAttack() As Attack
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.BuildAttack
     End Function
+    Friend ReadOnly Property DesignReady As Boolean
+        Get
+            If EquippedComponent Is Nothing = False Then Return True
+            If IsCompulsory = False Then Return True
+
+            Return False
+        End Get
+    End Property
 End Class

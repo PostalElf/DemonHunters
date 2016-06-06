@@ -77,7 +77,7 @@
     <Compile Include="Frames\FrameDesign.vb" />
     <Compile Include="Frames\Subcomponent.vb" />
     <Compile Include="Frames\Cost.vb" />
-    <Compile Include="Frames\Effect.vb" />
+    <Compile Include="Frames\Effect\Effect.vb" />
     <Compile Include="Frames\Frame.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

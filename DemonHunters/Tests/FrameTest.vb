@@ -8,9 +8,6 @@
         Dim falchion As Frame = BuildFalchion()
         Dim pistol As Frame = BuildPistol()
 
-        'Dim falchionAttack As Attack = falchion.BuildAttack
-        'Dim pistolAttack As Attack = pistol.BuildAttack
-
         hunter.AddCheck("Hunter Right Hand", falchion)
         hunter.Add("Hunter Right Hand", falchion)
         hunter.AddCheck("Hunter Left Hand", pistol)
@@ -126,6 +123,19 @@
     End Function
 
     Shared Sub TankTest()
+        Dim tank As Frame = BuildTank()
+        Dim nova As Subcomponent = BuildNova()
+        Dim treads As Subcomponent = buildTreads()
+
+        tank.AddCheck("Main Tank Weapon", nova)
+        tank.Add("Main Tank Weapon", nova)
+        tank.AddCheck("Tank Motive System", treads)
+        tank.Add("Tank Motive System", treads)
+
+        Dim tankDesign As FrameDesign = FrameDesign.Build(tank)
+        tank = Nothing
+    End Sub
+    Private Shared Function BuildTank() As Frame
         Dim tankRaw As New Queue(Of String)
         With tankRaw
             .Enqueue("Name:Vanquisher Tank")
@@ -133,15 +143,17 @@
             .Enqueue("Keywords:Tank")
             .Enqueue("Cost:5 supplies at production")
             .Enqueue("Cost:5 soldiers at deployment")
-            .Enqueue("Slot:Main Tank Weapon|Main Tank Weapon")
+            .Enqueue("Slot:Main Tank Weapon|Main Tank Weapon,Compulsory")
             .Enqueue("Slot:Secondary Tank Weapon|Secondary Tank Weapon")
-            .Enqueue("Slot:Tank Motive System|Tank Motive System")
-            .Enqueue("Slot:Tank Armour|Tank Armour")
+            .Enqueue("Slot:Tank Motive System|Tank Motive System,Compulsory")
+            .Enqueue("Slot:Tank Armour|Tank Armour,Compulsory")
         End With
         Dim tank As Frame = Frame.Build(tankRaw)
-
-        Dim gunRaw As New Queue(Of String)
-        With gunRaw
+        Return tank
+    End Function
+    Private Shared Function BuildNova() As Subcomponent
+        Dim novaRaw As New Queue(Of String)
+        With novaRaw
             .Enqueue("Name:Nova Cannon")
             .Enqueue("Keywords:Main Tank Weapon")
             .Enqueue("Cost:3 supplies at production")
@@ -150,11 +162,17 @@
             .Enqueue("Effect:Medium|40|3-5 energy_hard")
             .Enqueue("IsAttack")
         End With
-        Dim gun As Subcomponent = Subcomponent.Build(gunRaw)
-        If tank.AddCheck("Main Tank Weapon", gun) = False Then Throw New Exception
-        tank.Add("Main Tank Weapon", gun)
-
-        Dim tankDesign As FrameDesign = FrameDesign.Build(tank)
-        tank = Nothing
-    End Sub
+        Dim nova As Subcomponent = Subcomponent.Build(novaRaw)
+        Return nova
+    End Function
+    Private Shared Function BuildTreads() As Subcomponent
+        Dim treadsRaw As New Queue(Of String)
+        With treadsRaw
+            .Enqueue("Name:Tank Treads")
+            .Enqueue("Keywords:Tank Motive System")
+            .Enqueue("Cost:1 labour at production")
+        End With
+        Dim treads As Subcomponent = Subcomponent.Build(treadsRaw)
+        Return treads
+    End Function
 End Class

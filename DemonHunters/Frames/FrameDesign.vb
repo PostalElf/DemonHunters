@@ -4,6 +4,8 @@
     Private Costs As New List(Of Cost)
 
     Friend Shared Function Build(ByVal frame As Frame) As FrameDesign
+        If frame.DesignReady = False Then Return Nothing
+
         Dim frameDesign As New FrameDesign
         With frameDesign
             .BaseFrame = frame
