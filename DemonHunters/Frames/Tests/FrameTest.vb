@@ -5,13 +5,16 @@
     End Sub
     Shared Sub HunterTest()
         Dim hunter As Frame = BuildHunter()
-        Dim falchion As Frame = BuildFalchion()
-        Dim pistol As Frame = BuildPistol()
+        Dim comps As New Dictionary(Of String, Component)
+        With comps
+            .Add("Hunter Right Hand", BuildFalchion)
+            .Add("Hunter Left Hand", BuildPistol)
+        End With
 
-        hunter.AddCheck("Hunter Right Hand", falchion)
-        hunter.Add("Hunter Right Hand", falchion)
-        hunter.AddCheck("Hunter Left Hand", pistol)
-        hunter.Add("Hunter Left Hand", pistol)
+        For Each kvp As KeyValuePair(Of String, Component) In comps
+            If hunter.AddCheck(kvp.Key, kvp.Value) = False Then Throw New Exception
+            hunter.Add(kvp.Key, kvp.Value)
+        Next
 
         Dim hunterDesign As FrameDesign = FrameDesign.Build(hunter)
         hunter = Nothing
@@ -124,7 +127,7 @@
 
     Shared Sub TankTest()
         Dim tank As Frame = BuildTank()
-        Dim comps As New Dictionary(Of String, Subcomponent)
+        Dim comps As New Dictionary(Of String, Component)
         With comps
             .Add("Main Tank Weapon", BuildNova)
             .Add("Tank Motive System", BuildTreads)
@@ -132,7 +135,7 @@
             .Add("Tank Power Source", BuildDiesel)
         End With
 
-        For Each kvp As KeyValuePair(Of String, Subcomponent) In comps
+        For Each kvp As KeyValuePair(Of String, Component) In comps
             If tank.AddCheck(kvp.Key, kvp.Value) = False Then Throw New Exception
             tank.Add(kvp.Key, kvp.Value)
         Next
