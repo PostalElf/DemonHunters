@@ -5,6 +5,7 @@
         Select Case raw(0).Trim.ToLower
             Case "effectattack" : EffectAttack.Build(raw(1), parent)
             Case "effectpower" : EffectPower.Build(raw(1), parent)
+            Case "effectspeed" : EffectSpeed.Build(raw(1), parent)
             Case Else : Return False
         End Select
 

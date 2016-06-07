@@ -4,7 +4,7 @@
     Friend Stride As Integer
     Friend Run As Integer
 
-    Friend Shared Function Build(ByVal raw As String) As EffectSpeed
+    Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectSpeed
         Dim r As String() = raw.Split("/")
 
         Dim total As New EffectSpeed
@@ -13,6 +13,7 @@
             total.Stride = r(1)
             total.Run = r(2)
         End With
+        parent.Add(total)
         Return total
     End Function
     Friend Overrides Function Unbuild() As String
