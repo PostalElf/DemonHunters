@@ -7,8 +7,10 @@
         Dim hunter As Frame = BuildHunter()
         Dim comps As New Dictionary(Of String, Component)
         With comps
-            .Add("Hunter Right Hand", BuildFalchion)
-            .Add("Hunter Left Hand", BuildPistol)
+            .Add("Sarcophagus", BuildSarcophagus)
+            .Add("Spelltome", BuildSpelltome)
+            .Add("Right Hand", BuildFalchion)
+            .Add("Left Hand", BuildPistol)
         End With
 
         For Each kvp As KeyValuePair(Of String, Component) In comps
@@ -30,13 +32,34 @@
             .Enqueue("Cost:10 labour at production")
             .Enqueue("Cost:10 mana at deployment")
             .Enqueue("Cost:1 recruits at deployment")
-            .Enqueue("Slot:Hunter Right Hand|Hunter Hand,Melee")
-            .Enqueue("Slot:Hunter Left Hand|Hunter Hand")
-            .Enqueue("Slot:Hunter Right Shoulder|Hunter Shoulder")
+            .Enqueue("Slot:Sarcophagus|Sarcophagus,Compulsory")
+            .Enqueue("Slot:Spelltome|Spelltome")
+            .Enqueue("Slot:Right Hand|Hunter Hand,Melee")
+            .Enqueue("Slot:Left Hand|Hunter Hand")
+            .Enqueue("Slot:Right Shoulder|Hunter Shoulder")
         End With
         Dim hunter As Frame = Frame.Build(hunterRaw)
 
         Return hunter
+    End Function
+    Private Shared Function BuildSarcophagus() As Subcomponent
+        Dim raw As New Queue(Of String)
+        With raw
+            .Enqueue("Name:Hermetically-Sealed Sarcophagus")
+            .Enqueue("Keywords:Sarcophagus")
+            .Enqueue("Cost:5 supplies at production")
+            .Enqueue("EffectPower:5 arcane")
+        End With
+        Return Subcomponent.Build(raw)
+    End Function
+    Private Shared Function BuildSpelltome() As Subcomponent
+        Dim raw As New Queue(Of String)
+        With raw
+            .Enqueue("Name:Frozen Spelltome")
+            .Enqueue("Keywords:Spelltome")
+            .Enqueue("EffectPower: -3 Arcane")
+        End With
+        Return Subcomponent.Build(raw)
     End Function
     Private Shared Function BuildFalchion() As Frame
         Dim falchionRaw As New Queue(Of String)
