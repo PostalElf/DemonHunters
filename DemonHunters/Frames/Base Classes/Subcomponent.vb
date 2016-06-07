@@ -7,13 +7,7 @@
         While raw.Count > 0
             Dim current As String() = raw.Dequeue.Split(":")
             If subcomponent.BuildBase(current, subcomponent) = False Then
-                With subcomponent
-                    Select Case current(0).Trim.ToLower
-                        Case "effectattack" : EffectAttack.Build(current(1).Trim, .Effects)
-
-                        Case Else : Throw New Exception("Invalid build string for Subcomponent.")
-                    End Select
-                End With
+                If Effect.BuildBase(current, subcomponent.Effects) = False Then Throw New Exception("Invalid build string for Subcomponent.")
             End If
         End While
         Return subcomponent

@@ -5,7 +5,7 @@
     Friend Property Damages As Damages
 
     Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectAttack
-        'effect:melee|50|5-10 kinetic_hard, 5-5 kinetic_soft
+        'effectattack:melee|50|5-10 kinetic_hard, 5-5 kinetic_soft
 
         Dim r As String() = raw.Split("|")
         Dim effect As New EffectAttack
@@ -33,3 +33,11 @@
         Return total
     End Function
 End Class
+
+Public Enum EffectAttackDistance
+    Melee = 0
+    Close
+    Medium
+    Far
+End Enum
+
