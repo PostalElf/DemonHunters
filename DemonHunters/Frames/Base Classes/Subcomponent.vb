@@ -40,7 +40,4 @@
             Return Effects
         End Get
     End Property
-    Friend Overrides Function BuildAttack() As Attack
-        If IsAttack = False Then Return Nothing Else Return Attack.Build(TotalEffects, TotalCosts)
-    End Function
 End Class

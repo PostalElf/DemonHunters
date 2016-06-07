@@ -33,7 +33,14 @@
         Return True
     End Function
     Friend MustOverride Function Unbuild() As Queue(Of String)
-    Friend MustOverride Function BuildAttack() As Attack
+    Friend Function BuildAttack() As Attack
+        If IsAttack = False Then Return Nothing
+        Dim totalEffectAttacks As New List(Of EffectAttack)
+        For Each e As Effect In TotalEffects
+            If TypeOf e Is EffectAttack Then totalEffectAttacks.Add(CType(e, EffectAttack))
+        Next
+        Return Attack.Build(totalEffectAttacks, TotalCosts)
+    End Function
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
     Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)
 End Class

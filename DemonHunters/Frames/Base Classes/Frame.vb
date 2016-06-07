@@ -83,10 +83,6 @@
         Remove = Slots(slotName).Remove
     End Function
 
-    Friend Overrides Function BuildAttack() As Attack
-        If IsAttack = False Then Return Nothing
-        Return Attack.Build(TotalEffects, TotalCosts)
-    End Function
     Friend ReadOnly Property DesignReady As Boolean
         Get
             For Each slot As FrameSlot In Slots.Values
@@ -95,6 +91,13 @@
             Return True
         End Get
     End Property
+    Friend Function BuildUnitEffectsDictionary() As EffectsDictionary
+        Dim total As New EffectsDictionary
+        For Each Effect As Effect In TotalEffects
+            total.Add(Effect)
+        Next
+        Return total
+    End Function
     Friend Function BuildUnitAttacks() As List(Of Attack)
         Dim total As New List(Of Attack)
         For Each slot In Slots.Values

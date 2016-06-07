@@ -15,19 +15,13 @@
         Next
         Return total
     End Function
-    Public Shared Function Build(ByVal effectList As List(Of Effect), ByVal costList As List(Of Cost)) As Attack
+    Public Shared Function Build(ByVal effectAttackList As List(Of EffectAttack), ByVal costList As List(Of Cost)) As Attack
         Dim total As New Attack
-        For Each effect As Effect In effectList
-            If TypeOf effect Is EffectAttack = False Then Continue For
-            Dim e As EffectAttack = CType(effect, EffectAttack)
 
-            Dim distance As EffectAttackDistance = e.Distance
-            If total(distance) Is Nothing Then total(distance) = New EffectAttack
-            With total(distance)
-                .Distance = distance
-                .Accuracy += e.Accuracy
-                .Damages += e.Damages
-            End With
+        'merge effectAttacks and add them to the dictionary
+        Dim totalEffectAttacks As List(Of EffectAttack) = EffectAttack.MergeList(effectAttackList)
+        For Each ea As EffectAttack In totalEffectAttacks
+            total(ea.Distance) = ea
         Next
 
         'constrain accuracy to within 5 and 95
@@ -41,15 +35,6 @@
         Return total
     End Function
 
-    Public Sub Add(ByVal key As EffectAttackDistance, ByVal value As EffectAttack)
-        Dictionary.Add(key, value)
-    End Sub
-    Public Function ContainsKey(ByVal key As EffectAttackDistance) As Boolean
-        For Each k As EffectAttackDistance In Dictionary.Keys
-            If k = key Then Return True
-        Next
-        Return False
-    End Function
     Default Public Property Item(ByVal key As EffectAttackDistance) As EffectAttack
         Get
             Return Dictionary(key)

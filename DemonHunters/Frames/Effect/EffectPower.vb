@@ -16,6 +16,15 @@
     Friend Overrides Function Unbuild() As String
         Return "EffectPower:" & Quantity & " " & Type.ToString
     End Function
+    Friend Overrides Sub Merge(ByVal effect As Effect)
+        If TypeOf effect Is EffectPower = False Then Exit Sub
+
+        Dim effectPower As EffectPower = CType(effect, EffectPower)
+        With effectPower
+            If .Type <> Type Then Exit Sub
+            Quantity += .Quantity
+        End With
+    End Sub
 End Class
 
 Public Enum EffectPowerType

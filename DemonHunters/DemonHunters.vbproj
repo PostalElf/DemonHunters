@@ -75,9 +75,9 @@
     <Compile Include="Frames\Attack.vb" />
     <Compile Include="Frames\Base Classes\Component.vb" />
     <Compile Include="Frames\Effect\Damages.vb" />
-    <Compile Include="Frames\Effect\DamageType.vb" />
     <Compile Include="Frames\Effect\Effect.vb" />
-    <Compile Include="Frames\Effect\EffectAttackDistance.vb" />
+    <Compile Include="Frames\Effect\EffectsDictionary.vb" />
+    <Compile Include="Frames\Effect\EffectPower.vb" />
     <Compile Include="Frames\FrameDesign.vb" />
     <Compile Include="Frames\Base Classes\Subcomponent.vb" />
     <Compile Include="Frames\Cost.vb" />

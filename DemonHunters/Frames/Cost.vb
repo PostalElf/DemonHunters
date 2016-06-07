@@ -57,13 +57,13 @@
         Return total
     End Function
 
-    Friend Shared Function Total(ByVal inputList As List(Of Cost)) As List(Of Cost)
+    Friend Shared Function Merge(ByVal inputList As List(Of Cost)) As List(Of Cost)
         Dim t As New List(Of Cost)
         For Each input As Cost In inputList
             Dim matchFound As Boolean = False
             For n = 0 To t.Count - 1
                 If t(n) = input Then
-                    t(n).Quantity = t(n).Quantity + input.Quantity
+                    t(n).Merge(input)
                     matchFound = True
                     Exit For
                 End If
@@ -72,6 +72,11 @@
         Next
         Return t
     End Function
+    Friend Sub Merge(ByVal cost As Cost)
+        If cost <> Me Then Exit Sub
+
+        Quantity += cost.Quantity
+    End Sub
     Public Shared Operator =(ByVal v1 As Cost, ByVal v2 As Cost) As Boolean
         If v1.PaymentTime = v2.PaymentTime AndAlso v1.PaymentNature = v2.PaymentNature AndAlso v1.CrewType = v1.CrewType Then Return True
         Return False
