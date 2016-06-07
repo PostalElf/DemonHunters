@@ -2,6 +2,7 @@
     Protected Name As String
     Protected Keywords As New List(Of String)
     Protected Costs As New List(Of Cost)
+    Protected Effects As New List(Of Effect)
     Protected IsAttack As Boolean = False
 
     Friend Function CheckKeyword(ByVal keyword As String) As Boolean
@@ -27,7 +28,7 @@
                 Case "keywords" : .Keywords = Dev.ParseCommaList(raw(1).Trim)
                 Case "cost" : Cost.Build(raw(1).Trim, .Costs)
                 Case "isattack" : .IsAttack = True
-                Case Else : Return False
+                Case Else : If Effect.BuildBase(raw, .Effects) = False Then Return False
             End Select
         End With
         Return True

@@ -1,14 +1,11 @@
 ﻿Public Class Subcomponent
     Inherits Component
-    Private Effects As New List(Of Effect)
 
     Friend Shared Function Build(ByVal raw As Queue(Of String)) As Subcomponent
         Dim subcomponent As New Subcomponent
         While raw.Count > 0
             Dim current As String() = raw.Dequeue.Split(":")
-            If subcomponent.BuildBase(current, subcomponent) = False Then
-                If Effect.BuildBase(current, subcomponent.Effects) = False Then Throw New Exception("Invalid build string for Subcomponent.")
-            End If
+            If subcomponent.BuildBase(current, subcomponent) = False Then Throw New Exception("Invalid build string for Subcomponent.")
         End While
         Return subcomponent
     End Function
