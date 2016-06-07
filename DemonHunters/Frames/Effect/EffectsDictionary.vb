@@ -6,7 +6,6 @@
             Dictionary.Add(t, New List(Of Effect))
         Next
     End Sub
-
     Friend Shared Function Build(ByVal effects As List(Of Effect)) As EffectsDictionary
         Dim total As New EffectsDictionary
         With total
@@ -16,6 +15,14 @@
         End With
         Return total
     End Function
+    Public Overrides Function ToString() As String
+        Dim total As Integer = 0
+        For Each l As List(Of Effect) In Dictionary.Values
+            total += l.Count
+        Next
+        Return "Count: " & total
+    End Function
+
     Default Friend Property Item(ByVal EffectType As Type) As List(Of Effect)
         Get
             Return Dictionary(EffectType)

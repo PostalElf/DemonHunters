@@ -6,6 +6,7 @@
     Friend Overrides ReadOnly Property TotalEffects As List(Of Effect)
         Get
             Dim total As New List(Of Effect)
+            total.AddRange(Effects)
             For Each slot As FrameSlot In Slots.Values
                 If slot Is Nothing Then Continue For
                 Dim slotEffects As List(Of Effect) = slot.TotalEffects

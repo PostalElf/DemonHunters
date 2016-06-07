@@ -32,6 +32,7 @@
             .Enqueue("Cost:10 labour at production")
             .Enqueue("Cost:10 mana at deployment")
             .Enqueue("Cost:1 recruits at deployment")
+            .Enqueue("EffectPower:-5 Arcane")
             .Enqueue("Slot:Sarcophagus|Sarcophagus,Compulsory")
             .Enqueue("Slot:Spelltome|Spelltome")
             .Enqueue("Slot:Right Hand|Hunter Hand,Melee")
