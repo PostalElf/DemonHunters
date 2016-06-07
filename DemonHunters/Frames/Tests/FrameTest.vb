@@ -142,6 +142,7 @@
         Next
 
         Dim tankDesign As FrameDesign = FrameDesign.Build(tank)
+        Dim tankUnbuilt As Queue(Of String) = tank.Unbuild
         tank = Nothing
     End Sub
     Private Shared Function BuildTank() As Frame

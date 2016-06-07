@@ -132,6 +132,7 @@ Public Class FrameSlot
         total &= Name
         total &= "|"
         total &= Dev.ListWithCommas(KeywordRequirements)
+        If IsCompulsory = True Then total &= ", Compulsory"
         Return total
     End Function
     Public Overrides Function ToString() As String
