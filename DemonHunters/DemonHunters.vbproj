@@ -78,6 +78,7 @@
     <Compile Include="Frames\Effect\Effect.vb" />
     <Compile Include="Frames\Effect\EffectsDictionary.vb" />
     <Compile Include="Frames\Effect\EffectPower.vb" />
+    <Compile Include="Frames\Effect\EffectSpeed.vb" />
     <Compile Include="Frames\FrameDesign.vb" />
     <Compile Include="Frames\Base Classes\Subcomponent.vb" />
     <Compile Include="Frames\Cost.vb" />

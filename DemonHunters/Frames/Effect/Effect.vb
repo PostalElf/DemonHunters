@@ -1,5 +1,5 @@
 ﻿Public MustInherit Class Effect
-    Public Shared EffectTypeList As New List(Of Type) From {GetType(EffectAttack), GetType(EffectPower)}
+    Public Shared EffectTypeList As New List(Of Type) From {GetType(EffectPower), GetType(EffectSpeed)}
 
     Friend Shared Function BuildBase(ByVal raw As String(), ByVal parent As List(Of Effect)) As Boolean
         Select Case raw(0).Trim.ToLower
