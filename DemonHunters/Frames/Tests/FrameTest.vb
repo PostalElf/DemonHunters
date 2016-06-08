@@ -18,7 +18,7 @@
             hunter.Add(kvp.Key, kvp.Value)
         Next
 
-        Dim hunterUnit As Unit = Unit.Build(hunter)
+        Dim hunterUnit As Unit = Unit.Build("Hunter Malleus", hunter)
         hunter = Nothing
     End Sub
     Private Shared Function BuildHunter() As Frame
@@ -165,7 +165,7 @@
             tank.Add(kvp.Key, kvp.Value)
         Next
 
-        Dim tankUnit As Unit = Unit.Build(tank)
+        Dim tankUnit As Unit = Unit.Build("Vanquisher Tank", tank)
         tank = Nothing
     End Sub
     Private Shared Function BuildTank() As Frame
