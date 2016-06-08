@@ -206,6 +206,7 @@
             .Enqueue("Name:Tank Treads")
             .Enqueue("Keywords:Tank Motive System")
             .Enqueue("Cost:1 labour at production")
+            .Enqueue("EffectSpeed:0/1/2")
         End With
         Dim treads As Subcomponent = Subcomponent.Build(treadsRaw)
         Return treads

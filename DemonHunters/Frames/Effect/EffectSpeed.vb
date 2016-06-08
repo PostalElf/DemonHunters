@@ -1,8 +1,8 @@
 ﻿Public Class EffectSpeed
     Inherits Effect
-    Friend Walk As Integer
-    Friend Stride As Integer
-    Friend Run As Integer
+    Friend Property Walk As Integer
+    Friend Property Stride As Integer
+    Friend Property Run As Integer
 
     Friend Shared Function Build(ByVal raw As String, ByRef parent As List(Of Effect)) As EffectSpeed
         Dim r As String() = raw.Split("/")

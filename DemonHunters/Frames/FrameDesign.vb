@@ -6,14 +6,7 @@
 
     Friend Shared Function BuildCheck(ByVal frame As Frame) As Boolean
         Dim effectsDictionary As EffectsDictionary = frame.BuildUnitEffectsDictionary
-
-        'check power
-        Dim powers As List(Of Effect) = effectsDictionary(GetType(EffectPower))
-        For Each power As EffectPower In powers
-            If power.Quantity < 0 Then Return False
-        Next
-
-        Return True
+        Return effectsDictionary.DesignReady
     End Function
     Friend Shared Function Build(ByVal frame As Frame) As FrameDesign
         If frame.DesignReady = False Then Return Nothing

@@ -53,4 +53,22 @@
         Dim l As List(Of Effect) = Dictionary(t)
         If l.Contains(effect) Then l.Remove(effect)
     End Sub
+    Friend ReadOnly Property DesignReady As Boolean
+        Get
+            'check power
+            Dim powers As List(Of Effect) = Item(GetType(EffectPower))
+            For Each power As EffectPower In powers
+                If power.Quantity < 0 Then Return False
+            Next
+
+            'check speed
+            Dim speeds As List(Of Effect) = Item(GetType(EffectSpeed))
+            If speeds.Count = 0 Then Return False
+            Dim speed As EffectSpeed = speeds(0)
+            If speed.Walk <= 0 AndAlso speed.Stride <= 0 AndAlso speed.Run <= 0 Then Return False
+
+
+            Return True
+        End Get
+    End Property
 End Class
