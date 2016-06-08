@@ -27,9 +27,8 @@
             .Enqueue("Name:Malleus Hunter")
             .Enqueue("UnitType:Hunter")
             .Enqueue("Keywords:Hunter")
-            .Enqueue("Cost:5 supplies at production")
-            .Enqueue("Cost:10 labour at production")
-            .Enqueue("Cost:10 mana at deployment")
+            .Enqueue("Cost:1 supplies at production")
+            .Enqueue("Cost:1 mana at deployment")
             .Enqueue("Cost:1 recruits at deployment")
             .Enqueue("EffectPower:-5 Arcane")
             .Enqueue("Slot:Sarcophagus|Sarcophagus,Compulsory")
@@ -47,7 +46,7 @@
         With raw
             .Enqueue("Name:Hermetically-Sealed Sarcophagus")
             .Enqueue("Keywords:Sarcophagus")
-            .Enqueue("Cost:5 supplies at production")
+            .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectPower:5 arcane")
             .Enqueue("IsLimb")
         End With
@@ -58,6 +57,7 @@
         With raw
             .Enqueue("Name:Frozen Spelltome")
             .Enqueue("Keywords:Spelltome")
+            .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectPower: -3 Arcane")
         End With
         Return Subcomponent.Build(raw)
@@ -67,8 +67,7 @@
         With falchionRaw
             .Enqueue("Name:Falchion")
             .Enqueue("Keywords:Hunter Hand,Melee")
-            .Enqueue("Cost:5 supplies at production")
-            .Enqueue("Cost:1 labour at production")
+            .Enqueue("Cost:1 supplies at production")
             .Enqueue("Slot:Blade|Hard Blade")
             .Enqueue("Slot:Enchantment 1|Melee Enchantment")
             .Enqueue("Slot:Enchantment 2|Melee Enchantment")
@@ -81,8 +80,6 @@
             .Enqueue("Name:Soulsteel Blade")
             .Enqueue("Keywords:Hard Blade")
             .Enqueue("EffectAttack:Melee|50|3-5 kinetic_hard")
-            .Enqueue("Cost:5 supplies at production")
-            .Enqueue("Cost:1 labour at production")
         End With
         Dim blade As Subcomponent = Subcomponent.Build(bladeRaw)
         If falchion.AddCheck("Blade", blade) = False Then Throw New Exception
@@ -92,8 +89,6 @@
         With hellfireRaw
             .Enqueue("Name:Hellfire Hex")
             .Enqueue("Keywords:Melee Enchantment")
-            .Enqueue("Cost:5 mana at production")
-            .Enqueue("Cost:1 labour at production")
             .Enqueue("EffectAttack:Melee|0|5-5 arcane")
         End With
         Dim hellfire As Subcomponent = Subcomponent.Build(hellfireRaw)
@@ -104,7 +99,6 @@
         With truestrikeRaw
             .Enqueue("Name:Truestriking")
             .Enqueue("Keywords:Melee Enchantment")
-            .Enqueue("Cost:5 mana at production")
             .Enqueue("EffectAttack:Melee|20|1-1 kinetic_hard")
         End With
         Dim truestrike As Subcomponent = Subcomponent.Build(truestrikeRaw)
@@ -174,8 +168,8 @@
             .Enqueue("Name:Vanquisher Tank")
             .Enqueue("UnitType:Tank")
             .Enqueue("Keywords:Tank")
-            .Enqueue("Cost:5 supplies at production")
-            .Enqueue("Cost:5 soldiers at deployment")
+            .Enqueue("Cost:1 supplies at production")
+            .Enqueue("Cost:1 soldiers at deployment")
             .Enqueue("Slot:Main Tank Weapon|Main Tank Weapon,Compulsory")
             .Enqueue("Slot:Secondary Tank Weapon|Secondary Tank Weapon")
             .Enqueue("Slot:Tank Motive System|Tank Motive System,Compulsory")
@@ -191,8 +185,7 @@
         With novaRaw
             .Enqueue("Name:Nova Cannon")
             .Enqueue("Keywords:Main Tank Weapon")
-            .Enqueue("Cost:3 supplies at production")
-            .Enqueue("Cost:1 labour at production")
+            .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectAttack:Close|45|4-6 energy_hard")
             .Enqueue("EffectAttack:Medium|40|3-5 energy_hard")
         End With
@@ -204,7 +197,7 @@
         With treadsRaw
             .Enqueue("Name:Tank Treads")
             .Enqueue("Keywords:Tank Motive System")
-            .Enqueue("Cost:1 labour at production")
+            .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectSpeed:0/1/2")
         End With
         Dim treads As Subcomponent = Subcomponent.Build(treadsRaw)
@@ -215,7 +208,7 @@
         With armourRaw
             .Enqueue("Name:Soulsteel Plating")
             .Enqueue("Keywords:Tank Armour, Hunter Armour")
-            .Enqueue("Cost:3 supplies at production")
+            .Enqueue("Cost:1 supplies at production")
         End With
         Dim armour As Subcomponent = Subcomponent.Build(armourRaw)
         Return armour

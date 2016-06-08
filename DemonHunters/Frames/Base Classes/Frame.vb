@@ -24,7 +24,7 @@
                 Dim slotCosts As List(Of Cost) = slot.TotalCosts
                 If slotCosts Is Nothing = False Then total.AddRange(slotCosts)
             Next
-            Return total
+            Return Cost.MergeList(total)
         End Get
     End Property
 

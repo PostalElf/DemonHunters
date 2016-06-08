@@ -57,7 +57,7 @@
         Return total
     End Function
 
-    Friend Shared Function Merge(ByVal inputList As List(Of Cost)) As List(Of Cost)
+    Friend Shared Function MergeList(ByVal inputList As List(Of Cost)) As List(Of Cost)
         Dim t As New List(Of Cost)
         For Each input As Cost In inputList
             Dim matchFound As Boolean = False
