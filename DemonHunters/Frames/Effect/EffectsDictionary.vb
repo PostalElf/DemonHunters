@@ -53,22 +53,22 @@
         Dim l As List(Of Effect) = Dictionary(t)
         If l.Contains(effect) Then l.Remove(effect)
     End Sub
-    Friend ReadOnly Property DesignReady As Boolean
+    Friend ReadOnly Property DesignReady As CheckReason
         Get
             'check power
             Dim powers As List(Of Effect) = Item(GetType(EffectPower))
             For Each power As EffectPower In powers
-                If power.Quantity < 0 Then Return False
+                If power.Quantity < 0 Then Return New CheckReason("Insufficient " & power.Type.ToString & " Power")
             Next
 
             'check speed
             Dim speeds As List(Of Effect) = Item(GetType(EffectSpeed))
-            If speeds.Count = 0 Then Return False
+            If speeds.Count = 0 Then Return New CheckReason("Insufficient Speed")
             Dim speed As EffectSpeed = speeds(0)
-            If speed.Walk <= 0 AndAlso speed.Stride <= 0 AndAlso speed.Run <= 0 Then Return False
+            If speed.Walk <= 0 AndAlso speed.Stride <= 0 AndAlso speed.Run <= 0 Then Return New CheckReason("Insufficient Speed")
 
 
-            Return True
+            Return Nothing
         End Get
     End Property
 End Class

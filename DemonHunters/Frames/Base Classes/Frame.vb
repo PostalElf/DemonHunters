@@ -84,12 +84,12 @@
         Remove = Slots(slotName).Remove
     End Function
 
-    Friend ReadOnly Property DesignReady As Boolean
+    Friend ReadOnly Property DesignReady As CheckReason
         Get
             For Each slot As FrameSlot In Slots.Values
-                If slot.DesignReady = False Then Return False
+                If slot.DesignReady Is Nothing = False Then Return slot.DesignReady
             Next
-            Return True
+            Return Nothing
         End Get
     End Property
     Friend Function BuildUnitEffectsDictionary() As EffectsDictionary
@@ -169,12 +169,12 @@ Public Class FrameSlot
     Friend Function BuildAttack() As Attack
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.BuildAttack
     End Function
-    Friend ReadOnly Property DesignReady As Boolean
+    Friend ReadOnly Property DesignReady As CheckReason
         Get
-            If EquippedComponent Is Nothing = False Then Return True
-            If IsCompulsory = False Then Return True
+            If EquippedComponent Is Nothing = False Then Return Nothing
+            If IsCompulsory = False Then Return Nothing
 
-            Return False
+            Return New CheckReason("Empty Compulsory Slot", Name & " must be filled.")
         End Get
     End Property
 End Class

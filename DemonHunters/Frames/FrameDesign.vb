@@ -4,12 +4,12 @@
     Private Effects As EffectsDictionary
     Private Costs As New List(Of Cost)
 
-    Friend Shared Function BuildCheck(ByVal frame As Frame) As Boolean
+    Friend Shared Function BuildCheck(ByVal frame As Frame) As CheckReason
         Dim effectsDictionary As EffectsDictionary = frame.BuildUnitEffectsDictionary
         Return effectsDictionary.DesignReady
     End Function
     Friend Shared Function Build(ByVal frame As Frame) As FrameDesign
-        If frame.DesignReady = False Then Return Nothing
+        If frame.DesignReady Is Nothing = False Then Return Nothing
 
         Dim frameDesign As New FrameDesign
         With frameDesign
