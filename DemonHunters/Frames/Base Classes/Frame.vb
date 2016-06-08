@@ -92,18 +92,18 @@
             Return Nothing
         End Get
     End Property
+    Friend Function BuildUnitLimbs() As List(Of UnitLimb)
+        Dim total As New List(Of UnitLimb)
+        For Each slot In Slots.Values
+            Dim limb As UnitLimb = slot.BuildLimb
+            If limb Is Nothing = False Then total.Add(limb)
+        Next
+        Return total
+    End Function
     Friend Function BuildUnitEffectsDictionary() As EffectsDictionary
         Dim total As New EffectsDictionary
         For Each Effect As Effect In TotalEffects
             total.Add(Effect)
-        Next
-        Return total
-    End Function
-    Friend Function BuildUnitAttacks() As List(Of Attack)
-        Dim total As New List(Of Attack)
-        For Each slot In Slots.Values
-            Dim slotAttack As Attack = slot.BuildAttack
-            If slotAttack Is Nothing = False Then total.Add(slotAttack)
         Next
         Return total
     End Function
@@ -166,8 +166,9 @@ Public Class FrameSlot
     Friend Function TotalCosts() As List(Of Cost)
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.TotalCosts
     End Function
-    Friend Function BuildAttack() As Attack
-        If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.BuildAttack
+    Friend Function BuildLimb() As UnitLimb
+        If EquippedComponent Is Nothing Then Return Nothing
+        Return EquippedComponent.BuildLimb
     End Function
     Friend ReadOnly Property DesignReady As CheckReason
         Get

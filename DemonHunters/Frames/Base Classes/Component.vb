@@ -3,7 +3,7 @@
     Protected Keywords As New List(Of String)
     Protected Costs As New List(Of Cost)
     Protected Effects As New List(Of Effect)
-    Protected IsAttack As Boolean = False
+    Protected IsLimb As Boolean = False
 
     Friend Function CheckKeyword(ByVal keyword As String) As Boolean
         If Keywords.Contains(keyword) Then Return True
@@ -27,20 +27,16 @@
                 Case "name" : .Name = raw(1).Trim
                 Case "keywords" : .Keywords = Dev.ParseCommaList(raw(1).Trim)
                 Case "cost" : Cost.Build(raw(1).Trim, .Costs)
-                Case "isattack" : .IsAttack = True
+                Case "islimb" : .IsLimb = True
                 Case Else : If Effect.BuildBase(raw, .Effects) = False Then Return False
             End Select
         End With
         Return True
     End Function
     Friend MustOverride Function Unbuild() As Queue(Of String)
-    Friend Function BuildAttack() As Attack
-        If IsAttack = False Then Return Nothing
-        Dim totalEffectAttacks As New List(Of EffectAttack)
-        For Each e As Effect In TotalEffects
-            If TypeOf e Is EffectAttack Then totalEffectAttacks.Add(CType(e, EffectAttack))
-        Next
-        Return Attack.Build(totalEffectAttacks, TotalCosts)
+    Friend Function BuildLimb() As UnitLimb
+        If IsLimb = False Then Return Nothing
+        Return UnitLimb.Build(Name, TotalEffects, TotalCosts)
     End Function
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
     Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)

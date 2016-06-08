@@ -18,8 +18,7 @@
             hunter.Add(kvp.Key, kvp.Value)
         Next
 
-        Dim hunterDesign As FrameDesign = FrameDesign.Build(hunter)
-        Dim hunterUnbuilt As Queue(Of String) = hunter.Unbuild
+        Dim hunterUnit As Unit = Unit.Build(hunter)
         hunter = Nothing
     End Sub
     Private Shared Function BuildHunter() As Frame
@@ -50,6 +49,7 @@
             .Enqueue("Keywords:Sarcophagus")
             .Enqueue("Cost:5 supplies at production")
             .Enqueue("EffectPower:5 arcane")
+            .Enqueue("IsLimb")
         End With
         Return Subcomponent.Build(raw)
     End Function
@@ -72,7 +72,7 @@
             .Enqueue("Slot:Blade|Hard Blade")
             .Enqueue("Slot:Enchantment 1|Melee Enchantment")
             .Enqueue("Slot:Enchantment 2|Melee Enchantment")
-            .Enqueue("IsAttack")
+            .Enqueue("IsLimb")
         End With
         Dim falchion As Frame = Frame.Build(falchionRaw)
 
@@ -121,7 +121,7 @@
             .Enqueue("Cost:5 supplies at production")
             .Enqueue("Slot:Pistol Frame|Pistol Frame")
             .Enqueue("Slot:Caseless Ammo|Caseless Ammo")
-            .Enqueue("IsAttack")
+            .Enqueue("IsLimb")
         End With
         Dim pistol As Frame = Frame.Build(pistolRaw)
 

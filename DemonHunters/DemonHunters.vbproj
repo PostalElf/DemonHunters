@@ -69,6 +69,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckReason.vb" />
     <Compile Include="CrewType.vb" />
     <Compile Include="Dev\Dev.vb" />
     <Compile Include="Dev\IO.vb" />
@@ -102,7 +103,9 @@
     </Compile>
     <Compile Include="Dev\Range.vb" />
     <Compile Include="Frames\Tests\FrameTest.vb" />
-    <Compile Include="UnitType.vb" />
+    <Compile Include="Unit\Unit.vb" />
+    <Compile Include="Unit\UnitLimb.vb" />
+    <Compile Include="Unit\UnitType.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

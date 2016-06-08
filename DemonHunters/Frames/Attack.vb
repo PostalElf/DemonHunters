@@ -24,15 +24,17 @@
             total(ea.Distance) = ea
         Next
 
-        'constrain accuracy to within 5 and 95
-        For Each dt As EffectAttackDistance In System.Enum.GetValues(GetType(EffectAttackDistance))
-            If total(dt) Is Nothing = False Then total(dt).Accuracy = Dev.Constrain(total(dt).Accuracy, 5, 95)
-        Next
-
         'add all use cost
         total.UseCost = Cost.Retain(costList, PaymentTime.Use)
 
-        Return total
+        Dim valueFound As Boolean = False
+        For Each v As EffectAttack In total.Dictionary.Values
+            If v Is Nothing = False Then
+                valueFound = True
+                Exit For
+            End If
+        Next
+        If valueFound = True Then Return total Else Return Nothing
     End Function
 
     Default Public Property Item(ByVal key As EffectAttackDistance) As EffectAttack

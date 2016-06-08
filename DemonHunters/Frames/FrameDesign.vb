@@ -1,6 +1,5 @@
 ﻿Public Class FrameDesign
     Private BaseFrame As Frame
-    Private Attacks As New List(Of Attack)
     Private Effects As EffectsDictionary
     Private Costs As New List(Of Cost)
 
@@ -14,7 +13,6 @@
         Dim frameDesign As New FrameDesign
         With frameDesign
             .BaseFrame = frame
-            .Attacks = frame.BuildUnitAttacks
             .Effects = frame.BuildUnitEffectsDictionary
             .Costs = Cost.Strip(Cost.Merge(frame.TotalCosts), PaymentTime.Use)
         End With

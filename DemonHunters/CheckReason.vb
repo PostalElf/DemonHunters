@@ -6,4 +6,7 @@
         Title = pTitle
         Text = pText
     End Sub
+    Public Overrides Function ToString() As String
+        Return Title
+    End Function
 End Class
