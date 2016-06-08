@@ -165,8 +165,7 @@
             tank.Add(kvp.Key, kvp.Value)
         Next
 
-        Dim tankDesign As FrameDesign = FrameDesign.Build(tank)
-        Dim tankUnbuilt As Queue(Of String) = tank.Unbuild
+        Dim tankUnit As Unit = Unit.Build(tank)
         tank = Nothing
     End Sub
     Private Shared Function BuildTank() As Frame
@@ -182,6 +181,7 @@
             .Enqueue("Slot:Tank Motive System|Tank Motive System,Compulsory")
             .Enqueue("Slot:Tank Armour|Tank Armour")
             .Enqueue("Slot:Tank Power Source|Tank Power Source,Compulsory")
+            .Enqueue("IsLimb")
         End With
         Dim tank As Frame = Frame.Build(tankRaw)
         Return tank
@@ -195,7 +195,6 @@
             .Enqueue("Cost:1 labour at production")
             .Enqueue("EffectAttack:Close|45|4-6 energy_hard")
             .Enqueue("EffectAttack:Medium|40|3-5 energy_hard")
-            .Enqueue("IsAttack")
         End With
         Dim nova As Subcomponent = Subcomponent.Build(novaRaw)
         Return nova

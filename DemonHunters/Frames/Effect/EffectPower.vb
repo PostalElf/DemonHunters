@@ -20,15 +20,16 @@
     Public Overrides Function ToString() As String
         Return "Power: " & Quantity & " " & Type.ToString
     End Function
-    Friend Overrides Sub Merge(ByVal effect As Effect)
-        If TypeOf effect Is EffectPower = False Then Exit Sub
+    Friend Overrides Function Merge(ByVal effect As Effect) As Boolean
+        If TypeOf effect Is EffectPower = False Then Return False
 
         Dim effectPower As EffectPower = CType(effect, EffectPower)
         With effectPower
-            If .Type <> Type Then Exit Sub
+            If .Type <> Type Then Return False
             Quantity += .Quantity
         End With
-    End Sub
+        Return True
+    End Function
 End Class
 
 Public Enum EffectPowerType

@@ -38,6 +38,10 @@
         If IsLimb = False Then Return Nothing
         Return UnitLimb.Build(Name, TotalEffects, TotalCosts)
     End Function
+    Friend Function BuildEffects() As List(Of Effect)
+        If IsLimb = True Then Return Nothing
+        Return TotalEffects
+    End Function
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
     Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)
 End Class

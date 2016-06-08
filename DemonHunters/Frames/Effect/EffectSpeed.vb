@@ -22,13 +22,14 @@
     Public Overrides Function ToString() As String
         Return "Speed:" & Walk & "/" & Stride & "/" & Run
     End Function
-    Friend Overrides Sub Merge(ByVal effect As Effect)
-        If TypeOf effect Is EffectSpeed = False Then Exit Sub
+    Friend Overrides Function Merge(ByVal effect As Effect) As Boolean
+        If TypeOf effect Is EffectSpeed = False Then Return False
         Dim es As EffectSpeed = CType(effect, EffectSpeed)
         With es
             Walk += .Walk
             Stride += .Stride
             Run += .Run
         End With
-    End Sub
+        Return True
+    End Function
 End Class

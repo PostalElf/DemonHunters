@@ -1,7 +1,7 @@
 ﻿Public Class UnitLimb
     Friend Name As String
     Friend Attack As Attack
-    Private EffectsDictionary As EffectsDictionary
+    Friend Effects As New List(Of Effect)
 
     Friend Shared Function Build(ByVal pName As String, ByVal totalEffects As List(Of Effect), ByVal totalCosts As List(Of Cost)) As UnitLimb
         Dim effectList As New List(Of Effect)
@@ -13,8 +13,8 @@
         Dim total As New UnitLimb
         With total
             .Name = pName
-            .Attack = Attack.Build(attackList, totalCosts)
-            .EffectsDictionary = EffectsDictionary.Build(effectList)
+            .Attack = Attack.Build(EffectAttack.MergeList(attackList), totalCosts)
+            .Effects = Effect.MergeList(effectList)
         End With
         Return total
     End Function

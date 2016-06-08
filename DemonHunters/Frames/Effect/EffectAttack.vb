@@ -36,7 +36,7 @@
         Return total
     End Function
 
-    Public Shared Function MergeList(ByVal EffectAttackList As List(Of EffectAttack)) As List(Of EffectAttack)
+    Public Overloads Shared Function MergeList(ByVal EffectAttackList As List(Of EffectAttack)) As List(Of EffectAttack)
         Dim total As New List(Of EffectAttack)
         For Each e As EffectAttack In EffectAttackList
             Dim matchFound As Boolean = False
@@ -51,16 +51,17 @@
         Next
         Return total
     End Function
-    Friend Overrides Sub Merge(ByVal effect As Effect)
-        If TypeOf effect Is EffectAttack = False Then Exit Sub
+    Friend Overrides Function Merge(ByVal effect As Effect) As Boolean
+        If TypeOf effect Is EffectAttack = False Then Return False
 
         Dim effectAttack As EffectAttack = CType(effect, EffectAttack)
         With effectAttack
-            If .Distance <> Distance Then Exit Sub
+            If .Distance <> Distance Then Return False
             Accuracy += .Accuracy
             Damages += .Damages
         End With
-    End Sub
+        Return True
+    End Function
 End Class
 
 Public Enum EffectAttackDistance

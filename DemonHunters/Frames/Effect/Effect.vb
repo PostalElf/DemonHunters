@@ -17,5 +17,19 @@
         Return Nothing
     End Function
     Friend MustOverride Function Unbuild() As String
-    Friend MustOverride Sub Merge(ByVal effect As Effect)
+    Friend MustOverride Function Merge(ByVal effect As Effect) As Boolean
+    Friend Shared Function MergeList(ByVal effects As List(Of Effect)) As List(Of Effect)
+        Dim total As New List(Of Effect)
+        For Each e As Effect In effects
+            Dim matchFound As Boolean = False
+            For Each ef As Effect In total
+                If ef.Merge(e) = True Then
+                    matchFound = True
+                    Exit For
+                End If
+            Next
+            If matchFound = False Then total.Add(e)
+        Next
+        Return total
+    End Function
 End Class
