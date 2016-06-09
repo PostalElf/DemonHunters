@@ -34,7 +34,7 @@
     Const SpeedStride As Integer = 1
     Const SpeedRun As Integer = 2
     Private Sub HandleEffects()
-        For n = 0 To Effects.Count - 1
+        For n = Effects.Count - 1 To 0 Step -1
             Dim handled As Boolean = False
             Dim effect As Effect = Effects(n)
             Select Case effect.GetType

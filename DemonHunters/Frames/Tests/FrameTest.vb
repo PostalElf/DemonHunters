@@ -24,7 +24,7 @@
     Private Shared Function BuildHunter() As Frame
         Dim hunterRaw As New Queue(Of String)
         With hunterRaw
-            .Enqueue("Name:Malleus Hunter")
+            .Enqueue("Malleus Hunter")
             .Enqueue("UnitType:Hunter")
             .Enqueue("Keywords:Hunter")
             .Enqueue("Cost:1 supplies at production")
@@ -44,7 +44,7 @@
     Private Shared Function BuildSarcophagus() As Subcomponent
         Dim raw As New Queue(Of String)
         With raw
-            .Enqueue("Name:Hermetically-Sealed Sarcophagus")
+            .Enqueue("Hermetically-Sealed Sarcophagus")
             .Enqueue("Keywords:Sarcophagus")
             .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectPower:5 arcane")
@@ -55,7 +55,7 @@
     Private Shared Function BuildSpelltome() As Subcomponent
         Dim raw As New Queue(Of String)
         With raw
-            .Enqueue("Name:Frozen Spelltome")
+            .Enqueue("Frozen Spelltome")
             .Enqueue("Keywords:Spelltome")
             .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectPower: -3 Arcane")
@@ -165,7 +165,7 @@
     Private Shared Function BuildTank() As Frame
         Dim tankRaw As New Queue(Of String)
         With tankRaw
-            .Enqueue("Name:Vanquisher Tank")
+            .Enqueue("Vanquisher Tank")
             .Enqueue("UnitType:Tank")
             .Enqueue("Keywords:Tank")
             .Enqueue("Cost:1 supplies at production")
@@ -183,7 +183,7 @@
     Private Shared Function BuildNova() As Subcomponent
         Dim novaRaw As New Queue(Of String)
         With novaRaw
-            .Enqueue("Name:Nova Cannon")
+            .Enqueue("Nova Cannon")
             .Enqueue("Keywords:Main Tank Weapon")
             .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectAttack:Close|45|4-6 energy_hard")
@@ -195,7 +195,7 @@
     Private Shared Function BuildTreads() As Subcomponent
         Dim treadsRaw As New Queue(Of String)
         With treadsRaw
-            .Enqueue("Name:Tank Treads")
+            .Enqueue("Tank Treads")
             .Enqueue("Keywords:Tank Motive System")
             .Enqueue("Cost:1 supplies at production")
             .Enqueue("EffectSpeed:0/1/2")
@@ -206,7 +206,7 @@
     Private Shared Function BuildArmour() As Subcomponent
         Dim armourRaw As New Queue(Of String)
         With armourRaw
-            .Enqueue("Name:Soulsteel Plating")
+            .Enqueue("Soulsteel Plating")
             .Enqueue("Keywords:Tank Armour, Hunter Armour")
             .Enqueue("Cost:1 supplies at production")
         End With
@@ -216,7 +216,7 @@
     Private Shared Function BuildDiesel() As Subcomponent
         Dim raw As New Queue(Of String)
         With raw
-            .Enqueue("Name:Diesel Engine")
+            .Enqueue("Diesel Engine")
             .Enqueue("Keywords:Tank Power Source")
             .Enqueue("Cost:1 supplies at production")
         End With

@@ -1,0 +1,25 @@
+[Vanquisher Tank Mk I]
+BaseFrame:Vanquisher Tank
+Slot:Main Tank Weapon|Nova Cannon
+Slot:Secondary Tank Weapon|-
+Slot:Tank Motive System|Tank Treads
+Slot:Tank Armour|Soulsteel Plating
+Slot:Tank Power Source|Diesel Engine
+
+
+[Falchion Mk I]
+BaseFrame:Falchion
+Slot:Blade|Soulsteel Blade
+Slot:Enchantment 1|Hellfire Hex
+Slot:Enchantment 2|-
+
+
+[Malleus Hunter Mk I]
+BaseFrame:Malleus Hunter
+Slot:Sarcophagus|Sarcophagus
+Slot:Spelltome|-
+Slot:Right Hand|Falchion Mk I|IsFrame
+Slot:Left Hand|-
+Slot:Right Shoulder|-
+
+

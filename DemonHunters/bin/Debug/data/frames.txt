@@ -1,0 +1,36 @@
+[Malleus Hunter]
+UnitType:Hunter
+Keywords:Hunter
+Cost:1 supplies at production
+Cost:1 mana at deployment
+Cost:1 recruits at deployment
+EffectPower:-5 Arcane
+Slot:Sarcophagus|Sarcophagus,Compulsory
+Slot:Spelltome|Spelltome
+Slot:Right Hand|Hunter Hand,Melee
+Slot:Left Hand|Hunter Hand
+Slot:Right Shoulder|Hunter Shoulder
+
+
+[Vanquisher Tank]
+UnitType:Tank
+Keywords:Tank
+Cost:1 supplies at production
+Cost:1 soldiers at deployment
+Slot:Main Tank Weapon|Main Tank Weapon,Compulsory
+Slot:Secondary Tank Weapon|Secondary Tank Weapon
+Slot:Tank Motive System|Tank Motive System,Compulsory
+Slot:Tank Armour|Tank Armour
+Slot:Tank Power Source|Tank Power Source,Compulsory
+IsLimb
+
+
+[Falchion]
+Keywords:Hunter Hand,Melee
+Cost:1 supplies at production
+Slot:Blade|Hard Blade,Compulsory
+Slot:Enchantment 1|Melee Enchantment
+Slot:Enchantment 2|Melee Enchantment
+IsLimb
+
+

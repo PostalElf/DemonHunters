@@ -73,6 +73,7 @@
     <Compile Include="CrewType.vb" />
     <Compile Include="Dev\Dev.vb" />
     <Compile Include="Dev\IO.vb" />
+    <Compile Include="Dev\Pathnames.vb" />
     <Compile Include="Frames\Attack.vb" />
     <Compile Include="Frames\Base Classes\Component.vb" />
     <Compile Include="Frames\Effect\Damages.vb" />

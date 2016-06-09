@@ -30,6 +30,10 @@
         End With
         Return unit
     End Function
+    Friend Shared Function BuildFromDesign(ByVal baseFrameDesignName As String) As Unit
+        Dim baseFrame As Frame = Frame.BuildFromDesign(baseFrameDesignName)
+        Return Build(baseFrameDesignName, baseFrame)
+    End Function
     Public Overrides Function ToString() As String
         Return Name
     End Function

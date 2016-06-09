@@ -1,0 +1,46 @@
+[Nova Cannon]
+Keywords:Main Tank Weapon
+Cost:1 supplies at production
+EffectAttack:Close|45|4-6 energy_hard
+EffectAttack:Medium|40|3-5 energy_hard
+
+
+[Tank Treads]
+Keywords:Tank Motive System
+Cost:1 supplies at production
+EffectSpeed:0/1/2
+
+
+[Diesel Engine]
+Keywords:Tank Power Source
+Cost:1 supplies at production
+EffectPower:+5 Conventional
+
+
+[Soulsteel Plating]
+Keywords:Tank Armour, Hunter Armour
+Cost:1 supplies at production
+
+
+[Sarcophagus]
+Keywords:Sarcophagus
+Cost:1 supplies at production
+EffectPower:5 arcane
+IsLimb
+
+
+[Frozen Spelltome]
+Keywords:Spelltome
+Cost:1 supplies at production
+EffectPower: -3 Arcane
+
+
+[Soulsteel Blade]
+Keywords:Hard Blade
+EffectAttack:Melee|50|3-5 kinetic_hard
+
+
+[Hellfire Hex]
+Keywords:Melee Enchantment
+EffectAttack:Melee|0|5-5 arcane
+

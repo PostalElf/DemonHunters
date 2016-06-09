@@ -1,5 +1,5 @@
 ﻿Public MustInherit Class Component
-    Protected Name As String
+    Friend Name As String
     Protected Keywords As New List(Of String)
     Protected Costs As New List(Of Cost)
     Protected Effects As New List(Of Effect)
@@ -24,7 +24,6 @@
         With component
             Dim current As String = raw(0).Trim.ToLower
             Select Case raw(0).Trim.ToLower
-                Case "name" : .Name = raw(1).Trim
                 Case "keywords" : .Keywords = Dev.ParseCommaList(raw(1).Trim)
                 Case "cost" : Cost.Build(raw(1).Trim, .Costs)
                 Case "islimb" : .IsLimb = True

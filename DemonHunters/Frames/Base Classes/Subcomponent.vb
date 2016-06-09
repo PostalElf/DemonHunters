@@ -3,11 +3,17 @@
 
     Friend Shared Function Build(ByVal raw As Queue(Of String)) As Subcomponent
         Dim subcomponent As New Subcomponent
+        subcomponent.Name = raw.Dequeue
         While raw.Count > 0
             Dim current As String() = raw.Dequeue.Split(":")
             If subcomponent.BuildBase(current, subcomponent) = False Then Throw New Exception("Invalid build string for Subcomponent.")
         End While
         Return subcomponent
+    End Function
+    Friend Shared Function Build(ByVal targetName As String) As Subcomponent
+        Dim designRaw As Queue(Of String) = IO.BracketFileget(Pathnames.subcomponents, targetName)
+        If designRaw Is Nothing Then Return Nothing
+        Return Build(designRaw)
     End Function
     Friend Overrides Function Unbuild() As Queue(Of String)
         Dim total As New Queue(Of String)

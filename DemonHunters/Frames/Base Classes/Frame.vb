@@ -30,6 +30,7 @@
 
     Friend Shared Function Build(ByVal raw As Queue(Of String)) As Frame
         Dim frame As New Frame
+        frame.Name = raw.Dequeue.Trim
         While raw.Count > 0
             Dim current As String() = raw.Dequeue.Split(":")
             If frame.BuildBase(current, frame) = False Then
@@ -43,6 +44,11 @@
             End If
         End While
         Return frame
+    End Function
+    Friend Shared Function Build(ByVal targetName As String) As Frame
+        Dim designRaw As Queue(Of String) = IO.BracketFileget(Pathnames.frames, targetName)
+        If designRaw Is Nothing Then Return Nothing
+        Return Build(designRaw)
     End Function
     Friend Overrides Function Unbuild() As Queue(Of String)
         Dim total As New Queue(Of String)
@@ -84,14 +90,6 @@
         Remove = Slots(slotName).Remove
     End Function
 
-    Friend ReadOnly Property DesignReady As CheckReason
-        Get
-            For Each slot As FrameSlot In Slots.Values
-                If slot.DesignReady Is Nothing = False Then Return slot.DesignReady
-            Next
-            Return Nothing
-        End Get
-    End Property
     Friend Function BuildUnitLimbs() As List(Of UnitLimb)
         If IsLimb = True Then
             Return New List(Of UnitLimb) From {Me.BuildLimb()}
@@ -111,7 +109,62 @@
             Dim effects As List(Of Effect) = slot.BuildEffects
             If effects Is Nothing = False Then total.AddRange(effects)
         Next
+
+        'strip effectAttacks
+        For n = total.Count - 1 To 0 Step -1
+            Dim effect As Effect = total(n)
+            If TypeOf effect Is EffectAttack Then total.RemoveAt(n)
+        Next
         Return total
+    End Function
+
+    Friend ReadOnly Property DesignReady As CheckReason
+        Get
+            For Each slot As FrameSlot In Slots.Values
+                If slot.DesignReady Is Nothing = False Then Return slot.DesignReady
+            Next
+            Return Nothing
+        End Get
+    End Property
+    Friend Function BuildDesign(ByVal designName As String) As Queue(Of String)
+        Dim total As New Queue(Of String)
+        With total
+            .Enqueue(designName)
+            .Enqueue("BaseFrame:" & Name)
+            For Each slot In Slots.Values
+                .Enqueue("Slot:" & slot.BuildDesign)
+            Next
+        End With
+        Return total
+    End Function
+    Friend Shared Function BuildFromDesign(ByVal designName As String) As Frame
+        Dim designRaw As Queue(Of String) = IO.BracketFileget(Pathnames.designs, designName)
+        If designRaw Is Nothing Then Return Nothing
+
+        designRaw.Dequeue()
+        Dim baseFrameName As String = designRaw.Dequeue.Split(":")(1)
+        Dim baseFrame As Frame = Frame.Build(baseFrameName)
+        If baseFrame Is Nothing Then Return Nothing
+
+        With baseFrame
+            .Name = designName
+
+            While designRaw.Count > 0
+                Dim currentLine As String = designRaw.Dequeue
+                Dim s As String() = currentLine.Split(":")
+                Dim sp As String() = s(1).Split("|")
+
+                Dim slotName As String = sp(0)
+                Dim slotEquipName As String = sp(1)
+                If slotEquipName <> "-" Then
+                    'sp(2) / sp.count = 3 only exists if |IsFrame flag is added
+                    Dim component As Component
+                    If sp.Count = 3 Then component = Frame.BuildFromDesign(slotEquipName) Else component = Subcomponent.Build(slotEquipName)
+                    If component Is Nothing = False Then .Add(slotName, component) Else Throw New Exception("Invalid Slot BuildFromDesign")
+                End If
+            End While
+        End With
+        Return baseFrame
     End Function
 End Class
 
@@ -179,6 +232,7 @@ Public Class FrameSlot
     Friend Function BuildEffects() As List(Of Effect)
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.BuildEffects
     End Function
+
     Friend ReadOnly Property DesignReady As CheckReason
         Get
             If EquippedComponent Is Nothing = False Then Return Nothing
@@ -187,4 +241,15 @@ Public Class FrameSlot
             Return New CheckReason("Empty Compulsory Slot", Name & " must be filled.")
         End Get
     End Property
+    Friend Function BuildDesign() As String
+        Dim total As String = Name
+        If EquippedComponent Is Nothing Then
+            total &= "|-"
+        Else
+            total &= "|" & EquippedComponent.Name
+            If TypeOf EquippedComponent Is Frame Then total &= "|IsFrame"
+        End If
+
+        Return total
+    End Function
 End Class
