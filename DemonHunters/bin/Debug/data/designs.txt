@@ -23,3 +23,18 @@ Slot:Left Hand|-
 Slot:Right Shoulder|-
 
 
+[Gauss Pistol Mk I]
+BaseFrame:Gauss Pistol
+Slot:Frame|Heavyduty Pistol Frame
+Slot:Caseless Ammo|Standard Gauss Rounds
+
+
+[Malleus Hunter Mk II]
+BaseFrame:Malleus Hunter
+Slot:Sarcophagus|Sarcophagus
+Slot:Spelltome|-
+Slot:Right Hand|Falchion Mk I|IsFrame
+Slot:Left Hand|-
+Slot:Right Shoulder|-
+
+

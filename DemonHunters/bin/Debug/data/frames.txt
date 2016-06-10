@@ -34,3 +34,9 @@ Slot:Enchantment 2|Melee Enchantment
 IsLimb
 
 
+[Gauss Pistol]
+Keywords:Hunter Hand
+Cost:1 supplies at production
+Slot:Frame|Pistol Frame,Compulsory
+Slot:Caseless Ammo|Caseless Ammo,Compulsory
+IsLimb

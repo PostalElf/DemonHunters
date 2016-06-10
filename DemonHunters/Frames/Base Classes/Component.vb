@@ -32,6 +32,14 @@
         End With
         Return True
     End Function
+    Friend Shared Function BuildBase(ByVal targetName As String) As Component
+        Dim q As Queue(Of String) = IO.BracketFileget(Pathnames.frames, targetName)
+        If q Is Nothing = False Then Return Frame.Build(q)
+        q = IO.BracketFileget(Pathnames.subcomponents, targetName)
+        If q Is Nothing = False Then Return Subcomponent.Build(q)
+
+        Return Nothing
+    End Function
     Friend MustOverride Function Unbuild() As Queue(Of String)
     Friend Function BuildLimb() As UnitLimb
         If IsLimb = False Then Return Nothing

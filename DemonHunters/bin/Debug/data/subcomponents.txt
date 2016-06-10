@@ -44,3 +44,15 @@ EffectAttack:Melee|50|3-5 kinetic_hard
 Keywords:Melee Enchantment
 EffectAttack:Melee|0|5-5 arcane
 
+
+[Heavyduty Pistol Frame]
+Keywords:Pistol Frame
+EffectAttack:Close|35|3-5 kinetic_hard
+EffectAttack:Medium|10|1-3 kinetic_hard
+
+
+[Standard Gauss Rounds]
+Keywords:Caseless Ammo
+Cost:1 supplies at use
+EffectAttack:Close|5|0-0 none
+

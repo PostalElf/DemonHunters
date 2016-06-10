@@ -137,11 +137,8 @@
         End With
         Return total
     End Function
-    Friend Shared Function BuildFromDesign(ByVal designName As String) As Frame
-        Dim designRaw As Queue(Of String) = IO.BracketFileget(Pathnames.designs, designName)
-        If designRaw Is Nothing Then Return Nothing
-
-        designRaw.Dequeue()
+    Friend Shared Function BuildFromDesign(ByVal designRaw As Queue(Of String)) As Frame
+        Dim designName As String = designRaw.Dequeue()
         Dim baseFrameName As String = designRaw.Dequeue.Split(":")(1)
         Dim baseFrame As Frame = Frame.Build(baseFrameName)
         If baseFrame Is Nothing Then Return Nothing
@@ -165,6 +162,10 @@
             End While
         End With
         Return baseFrame
+    End Function
+    Friend Shared Function BuildFromDesign(ByVal designName As String) As Frame
+        Dim designRaw As Queue(Of String) = IO.BracketFileget(Pathnames.designs, designName)
+        If designRaw Is Nothing Then Return Nothing Else Return BuildFromDesign(designRaw)
     End Function
 End Class
 
