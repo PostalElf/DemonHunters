@@ -2,6 +2,14 @@
     Inherits Component
     Private Slots As New Dictionary(Of String, FrameSlot)
     Private UnitType As UnitType = 0
+    Private ReadOnly Property IsLimbless As Boolean
+        Get
+            For Each slot In Slots.Values
+                If slot.isLimb = True Then Return False
+            Next
+            Return True
+        End Get
+    End Property
 
     Friend Overrides ReadOnly Property TotalEffects As List(Of Effect)
         Get
@@ -91,8 +99,8 @@
     End Function
 
     Friend Function BuildUnitLimbs() As List(Of UnitLimb)
-        If IsLimb = True Then
-            Return New List(Of UnitLimb) From {Me.BuildLimb()}
+        If IsLimbless = True Then
+            Return New List(Of UnitLimb) From {UnitLimb.Build(Name, TotalEffects, TotalCosts)}
         Else
             Dim total As New List(Of UnitLimb)
             For Each slot In Slots.Values
@@ -174,6 +182,12 @@ Public Class FrameSlot
     Private KeywordRequirements As New List(Of String)
     Private EquippedComponent As Component
     Private IsCompulsory As Boolean = False
+    Friend ReadOnly Property IsLimb As Boolean
+        Get
+            Return _IsLimb
+        End Get
+    End Property
+    Private _IsLimb As Boolean = False
 
     Friend Shared Function Build(ByVal raw As String, ByRef parent As Dictionary(Of String, FrameSlot)) As FrameSlot
         'slot:hunter right hand|hunter hand, melee
@@ -186,6 +200,10 @@ Public Class FrameSlot
             If .KeywordRequirements.Contains("Compulsory") Then
                 .KeywordRequirements.Remove("Compulsory")
                 .IsCompulsory = True
+            End If
+            If .KeywordRequirements.Contains("IsLimb") Then
+                .KeywordRequirements.Remove("IsLimb")
+                ._IsLimb = True
             End If
         End With
         parent.Add(slot.Name, slot)
@@ -227,11 +245,14 @@ Public Class FrameSlot
         If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.TotalCosts
     End Function
     Friend Function BuildLimb() As UnitLimb
+        If _IsLimb = False Then Return Nothing
         If EquippedComponent Is Nothing Then Return Nothing
-        Return EquippedComponent.BuildLimb
+        Return UnitLimb.Build(Name, TotalEffects, TotalCosts)
     End Function
     Friend Function BuildEffects() As List(Of Effect)
-        If EquippedComponent Is Nothing Then Return Nothing Else Return EquippedComponent.BuildEffects
+        If _IsLimb = True Then Return Nothing
+        If EquippedComponent Is Nothing Then Return Nothing
+        Return TotalEffects()
     End Function
 
     Friend ReadOnly Property DesignReady As CheckReason

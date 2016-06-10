@@ -3,7 +3,6 @@
     Protected Keywords As New List(Of String)
     Protected Costs As New List(Of Cost)
     Protected Effects As New List(Of Effect)
-    Protected IsLimb As Boolean = False
 
     Friend Function CheckKeyword(ByVal keyword As String) As Boolean
         If Keywords.Contains(keyword) Then Return True
@@ -26,7 +25,6 @@
             Select Case raw(0).Trim.ToLower
                 Case "keywords" : .Keywords = Dev.ParseCommaList(raw(1).Trim)
                 Case "cost" : Cost.Build(raw(1).Trim, .Costs)
-                Case "islimb" : .IsLimb = True
                 Case Else : If Effect.BuildBase(raw, .Effects) = False Then Return False
             End Select
         End With
@@ -41,14 +39,6 @@
         Return Nothing
     End Function
     Friend MustOverride Function Unbuild() As Queue(Of String)
-    Friend Function BuildLimb() As UnitLimb
-        If IsLimb = False Then Return Nothing
-        Return UnitLimb.Build(Name, TotalEffects, TotalCosts)
-    End Function
-    Friend Function BuildEffects() As List(Of Effect)
-        If IsLimb = True Then Return Nothing
-        Return TotalEffects
-    End Function
     Friend MustOverride ReadOnly Property TotalCosts As List(Of Cost)
     Friend MustOverride ReadOnly Property TotalEffects As List(Of Effect)
 End Class

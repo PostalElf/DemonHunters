@@ -14,15 +14,6 @@ Slot:Enchantment 1|Hellfire Hex
 Slot:Enchantment 2|-
 
 
-[Malleus Hunter Mk I]
-BaseFrame:Malleus Hunter
-Slot:Sarcophagus|Sarcophagus
-Slot:Spelltome|-
-Slot:Right Hand|Falchion Mk I|IsFrame
-Slot:Left Hand|-
-Slot:Right Shoulder|-
-
-
 [Gauss Pistol Mk I]
 BaseFrame:Gauss Pistol
 Slot:Frame|Heavyduty Pistol Frame
@@ -34,7 +25,7 @@ BaseFrame:Malleus Hunter
 Slot:Sarcophagus|Sarcophagus
 Slot:Spelltome|-
 Slot:Right Hand|Falchion Mk I|IsFrame
-Slot:Left Hand|-
+Slot:Left Hand|Gauss Pistol Mk I|IsFrame
 Slot:Right Shoulder|-
 
 

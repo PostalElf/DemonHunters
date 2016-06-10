@@ -5,11 +5,11 @@ Cost:1 supplies at production
 Cost:1 mana at deployment
 Cost:1 recruits at deployment
 EffectPower:-5 Arcane
-Slot:Sarcophagus|Sarcophagus,Compulsory
+Slot:Sarcophagus|Sarcophagus,Compulsory,IsLimb
 Slot:Spelltome|Spelltome
-Slot:Right Hand|Hunter Hand,Melee
-Slot:Left Hand|Hunter Hand
-Slot:Right Shoulder|Hunter Shoulder
+Slot:Right Hand|Hunter Hand,Melee,IsLimb
+Slot:Left Hand|Hunter Hand,IsLimb
+Slot:Right Shoulder|Hunter Shoulder,IsLimb
 
 
 [Vanquisher Tank]
@@ -22,7 +22,6 @@ Slot:Secondary Tank Weapon|Secondary Tank Weapon
 Slot:Tank Motive System|Tank Motive System,Compulsory
 Slot:Tank Armour|Tank Armour
 Slot:Tank Power Source|Tank Power Source,Compulsory
-IsLimb
 
 
 [Falchion]
@@ -31,7 +30,6 @@ Cost:1 supplies at production
 Slot:Blade|Hard Blade,Compulsory
 Slot:Enchantment 1|Melee Enchantment
 Slot:Enchantment 2|Melee Enchantment
-IsLimb
 
 
 [Gauss Pistol]
@@ -39,4 +37,3 @@ Keywords:Hunter Hand
 Cost:1 supplies at production
 Slot:Frame|Pistol Frame,Compulsory
 Slot:Caseless Ammo|Caseless Ammo,Compulsory
-IsLimb

@@ -26,7 +26,6 @@ Cost:1 supplies at production
 Keywords:Sarcophagus
 Cost:1 supplies at production
 EffectPower:5 arcane
-IsLimb
 
 
 [Frozen Spelltome]
