@@ -4,6 +4,15 @@
         If value > max Then value = max
         Return value
     End Function
+    Public Shared Function vbSpace(Optional ByVal indent As Integer = 1) As String
+        Const space As String = "  "
+
+        Dim total As String = ""
+        For n = 1 To indent
+            total &= space
+        Next
+        Return total
+    End Function
 
     Public Shared Function ListWithCommas(ByVal inputList As List(Of String)) As String
         Dim total As String = ""

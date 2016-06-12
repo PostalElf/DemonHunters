@@ -53,6 +53,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -73,6 +75,7 @@
     <Compile Include="CrewType.vb" />
     <Compile Include="Dev\Dev.vb" />
     <Compile Include="Dev\IO.vb" />
+    <Compile Include="Dev\Menu.vb" />
     <Compile Include="Dev\Pathnames.vb" />
     <Compile Include="Frames\Attack.vb" />
     <Compile Include="Frames\Base Classes\Component.vb" />
@@ -101,7 +104,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Dev\Range.vb" />
-    <Compile Include="Frames\Tests\FrameTest.vb" />
+    <Compile Include="Dev\Tests\FrameTest.vb" />
     <Compile Include="Unit\Unit.vb" />
     <Compile Include="Unit\UnitLimb.vb" />
     <Compile Include="Unit\UnitType.vb" />
